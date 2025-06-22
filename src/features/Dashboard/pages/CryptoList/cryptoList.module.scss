@@ -1,0 +1,63 @@
+.titleSection {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.container {
+  padding: 12px;
+  border: 1px solid #b4b4b4;
+  border-radius: 4px;
+}
+
+.cryptoItem {
+  //background: green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+.imgContainer {
+  background: gray;
+  width: 32px;
+  height: 32px;
+}
+
+.img {
+  width: 32px;
+  height: 32px;
+
+}
+
+.symbolWrapper {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  gap: 12px;
+}
+
+.symbolName {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+
+.price {
+  width: 100px;
+  color: #2c3e50;
+  text-align: left;
+  font-weight: 500;
+}
+
+.percentChange {
+  background: rgb(245, 245, 245);
+  min-width: 70px;
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-align: right;
+}

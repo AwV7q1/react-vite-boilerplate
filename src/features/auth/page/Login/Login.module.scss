@@ -1,0 +1,62 @@
+.container {
+  margin: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100svh;
+}
+
+.formContainer {
+
+}
+
+.logo {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 82px;
+  color: #4075dc;
+  padding: 8dvh 0 3dvh 0;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.labelInput {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.inputStyle {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.errorMsg {
+  padding: 12px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(187, 38, 38, 0.82);
+  margin-bottom: 32px;
+}
+
+.buttonSubmit {
+  width: 100%;
+  padding: 8px 12px;
+  background: #4075dc;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}

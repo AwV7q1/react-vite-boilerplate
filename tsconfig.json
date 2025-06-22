@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowJs": true,         // 👈 Cho phép biên dịch file .js
+    "checkJs": false,        // 👈 Không báo lỗi trong file .js
+    "jsx": "react-jsx",      // 👈 Cho phép JSX trong .js/.tsx
+    "isolatedModules": true,
+    "lib": [
+      "decorators",
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.promise"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"],
+      "@features/*": ["src/features/*"],
+      "@infra/*": ["src/infra/*"],
+      "@shared/*": ["src/shared/*"],
+      "@style/*": ["src/style/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src"]
+  },
+  "include": ["src"],
+}
