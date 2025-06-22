@@ -9,6 +9,7 @@ type ButtonProps = {
     type?: 'button' | 'submit';
 };
 
+
 const Button: FC<ButtonProps> = ({label, onClick, variant = 'primary', disabled, type}) => {
     const baseClass = styles.btn;
     const variantClass = styles[`btn-${variant}`] ?? '';

@@ -6,27 +6,28 @@ import {
 } from 'react';
 import ErrorBoundaryComponent from "../components/feedback/ErrorBoundaryComponent";
 
-// Type cho tùy chọn
+// Type for options
 type WithLazyOptions = {
     fallback?: ReactNode;
     retryCount?: number; // số lần thử lại khi import thất bại
 };
 
-// Hàm tạo lazy component với retry
+// function lazy component with retry
 function lazyWithRetry<T extends ComponentType<any>>(
-    importFn: () => Promise<{ default: T }>, // nhận vào function import component
+    importFn: () => Promise<{ default: T }>, // take a function import component
     retryCount = 3
 ): LazyExoticComponent<T> {
     return lazy(() => {
-        // gán số lần retry được truyền vào
+
+        // number retry
         let retries = retryCount;
 
         const attempt = (): Promise<{ default: T }> =>
             importFn().catch((err) => {
-                if (retries <= 0) throw err; // kiểm tra hết số lần retry thì báo lỗi
-                retries--;                   // trừ số lần retry qua mỗi lần
+                if (retries <= 0) throw err; // Check if all retry attempts are exhausted, then throw an error
+                retries--;                   // Decrease the retry count on each attempt
                 return new Promise((resolve) =>
-                    setTimeout(() => resolve(attempt()), 500) // retry mỗi lần cách nhau 500ms
+                    setTimeout(() => resolve(attempt()), 500) // Retry every 500ms between attempts
                 );
             });
 
@@ -34,18 +35,18 @@ function lazyWithRetry<T extends ComponentType<any>>(
     });
 }
 
-// Hàm withLazy chính
+// function withLazy
 export function withLazy<T extends ComponentType<any>>(
     importFn: () => Promise<{ default: T }>,
     options?: WithLazyOptions
 ) {
-    // gọi lazy retry truyền vào import component và số lần retry
+    // Call lazyRetry with the imported component and the number of retry attempts
     const LazyComponent = lazyWithRetry(importFn, options?.retryCount ?? 3);
 
-    // bọc lại trong Suspense để hiển thị fallback trong lúc chờ
+    // Wrap with Suspense to show fallback while loading
     const WrapperComponent = (props: ComponentProps<T>) => {
         return (
-            // không truyền fallback sẽ tự lấy loading hiển thị
+            // If no fallback is provided, it will use the default loading indicator
             <ErrorBoundaryComponent>
                 <Suspense fallback={options?.fallback ?? <div>Loading...</div>}>
                     <LazyComponent {...props} />
@@ -55,7 +56,7 @@ export function withLazy<T extends ComponentType<any>>(
         );
     };
 
-    // ✅ Gắn preload vào component trả về
+    // Attach preload to the returned component
     (WrapperComponent as any).preload = importFn;
 
     return WrapperComponent as ComponentType<ComponentProps<T>> & {

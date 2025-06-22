@@ -5,10 +5,10 @@ export default function ErrorPage() {
 
   return (
     <div style={{ padding: '2rem', textAlign: 'center', color: 'red' }}>
-      <h1>🚨 Oops! Có lỗi xảy ra.</h1>
+      <h1>🚨 Oops! Something went wrong.</h1>
       <p>{error?.statusText || error?.message}</p>
       <button onClick={() => window.location.href = '/'} style={{ marginTop: '1rem' }}>
-        Quay về trang chủ
+        Go back to home page
       </button>
     </div>
   );

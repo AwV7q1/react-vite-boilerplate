@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "module": "esnext",       // Use ESNext module system (supports modern import/export, required for import.meta)
     "allowJs": true,          // Allow TypeScript to compile JavaScript (.js) files
     "checkJs": false,         // Disable type-checking for JavaScript files
@@ -14,7 +14,8 @@
       "dom",
       "es5",
       "scripthost",
-      "es2015.promise"
+      "es2015.promise",
+      "ESNext"
     ],
     "baseUrl": ".",
     "paths": {
@@ -27,7 +28,7 @@
       "@style/*": ["src/style/*"]
     },
     "typeRoots": ["./node_modules/@types", "./src"],
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "node", "react", "react-dom"]
   },
   "include": ["src", "vite-env.d.ts"]
 }

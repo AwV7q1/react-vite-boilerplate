@@ -12,9 +12,6 @@ i18n
         supportedLngs: ['en', 'vi'],
         defaultNS: 'common',
         ns: ['common'], // default namespace
-        interpolation: {
-            escapeValue: false,
-        },
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json', // Load file JSON
         },
