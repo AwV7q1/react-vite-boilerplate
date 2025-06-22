@@ -7,7 +7,6 @@ The main entry point folder of the application.
 - `Router.tsx`: Defines the main routes of the application.
 - `providers/`: Contains context providers or global wrappers such as:
   - `ReactQueryProvider.tsx`
-  - `ThemeProvider.tsx`
   - `SuspenseBoundary.tsx`
 
 > Should only contain app-wide logic (no domain-specific logic).

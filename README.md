@@ -43,7 +43,6 @@ src/
 │ ├── Router.tsx
 │ └── providers/
 │ ├── ReactQueryProvider.tsx
-│ ├── ThemeProvider.tsx
 │ └── SuspenseBoundary.tsx
 │
 ├── features/ # Domain-specific features
