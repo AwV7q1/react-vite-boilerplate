@@ -31,14 +31,14 @@ export default defineConfig(({mode})  => {
     plugins: [
       react(),
       (isAnalyze ? [visualizer({
-        filename: './dist/stats.html', // ✅ Tạo file trong thư mục dist
-        open: true,                   // ✅ Tự mở trình duyệt sau build
-        gzipSize: true,                // ✅ Hiển thị kích thước gzip
-        brotliSize: true,              // ✅ Hiển thị kích thước brotli
-        template: 'treemap',           // hoặc 'sunburst', 'network'
+        filename: './dist/stats.html', // ✅ Generate file inside the dist folder
+        open: true,                    // ✅ Automatically open in browser after build
+        gzipSize: true,                // ✅ Show gzip-compressed bundle size
+        brotliSize: true,              // ✅ Show Brotli-compressed bundle size
+        template: 'treemap',           // or 'sunburst', 'network'
       })] : []),
       VitePWA({
-        registerType: 'autoUpdate', // Tự động update SW
+        registerType: 'autoUpdate', // auto update SW
         includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
         manifest: {
           name: 'Tên Ứng Dụng',

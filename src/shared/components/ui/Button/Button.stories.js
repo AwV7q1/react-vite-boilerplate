@@ -1,7 +1,7 @@
-import { Button } from './index.tsx';
+import Button from "./index.js";
 import {fn} from "storybook/test";
 
-export const buttonStory=  {
+export default {
     title: 'Shared/UI/Button',
     component: Button,
     parameters: {

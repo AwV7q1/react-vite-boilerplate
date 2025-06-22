@@ -1,15 +1,15 @@
 # /features
 
-Tổ chức theo domain/tính năng (feature-based structure).
+Organized by domain/feature (feature-based structure).
 
-## Quy ước:
-Mỗi domain nằm trong thư mục con (VD: `auth`, `dashboard`, `settings`) và tự quản lý logic của nó.
+## Convention:
+Each domain is placed in its own subfolder (e.g., `auth`, `dashboard`, `settings`) and manages its own logic.
 
-### Cấu trúc bên trong mỗi domain:
-- `components/`: UI components riêng cho domain.
-- `hooks/`: Hook liên quan domain (thường wrap useQuery/useMutation).
-- `pages/`: Page component để dùng trong route.
-- `services/` hoặc `api/`: Gọi API domain, tách riêng mutation/query logic.
-- `types.ts`: Interface riêng cho domain.
+### Structure inside each domain:
+- `components/`: UI components specific to the domain.
+- `hooks/`: Domain-related hooks (usually wrapping useQuery/useMutation).
+- `pages/`: Page components used in routing.
+- `services/` or `api/`: Handles domain API calls, separating mutation/query logic.
+- `types.ts`: Interfaces specific to the domain.
 
-> Không được dùng trực tiếp từ feature này sang feature khác. Dùng `shared/` để tái sử dụng.
+> Do not use code directly between features. Use `shared/` for reusable logic.

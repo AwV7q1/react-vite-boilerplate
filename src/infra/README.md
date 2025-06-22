@@ -1,11 +1,11 @@
 # /infra
 
-Hạ tầng kỹ thuật - xử lý tầng nền không liên quan trực tiếp đến UI.
+Technical infrastructure — handles low-level logic not directly related to the UI.
 
-## Thư mục con:
-- `api/`: Axios setup, interceptors,...
-- `query/`: Cấu hình React Query (`queryClient`, `defaultOptions`)
-- `workers/`: Web Worker script (xử lý nặng tách khỏi main thread)
-- `i18n/`: Đa ngôn ngữ (nếu có)
+## Subfolders:
+- `api/`: Axios setup, interceptors, etc.
+- `query/`: React Query configuration (`queryClient`, `defaultOptions`)
+- `workers/`: Web Worker scripts (for heavy processing off the main thread)
+- `i18n/`: Internationalization (if applicable)
 
-> Đây là tầng "infrastructure", không chứa logic domain cụ thể.
+> This is the "infrastructure" layer and should not contain any domain-specific logic.

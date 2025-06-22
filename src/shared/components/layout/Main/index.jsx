@@ -6,12 +6,10 @@ import styles from './LayoutMain.module.scss'
 
 const LayoutApp = () => {
   return (
-    <div className={styles.background}>
-      <div className={styles.container}>
-        <NetworkStatusNotifier/>
-          <Outlet/>
-        <NavigateBottom/>
-      </div>
+    <div className={styles.mainContainer}>
+      <NetworkStatusNotifier/>
+      <Outlet/>
+      <NavigateBottom/>
     </div>
   );
 };

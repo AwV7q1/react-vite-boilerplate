@@ -1,13 +1,13 @@
 # /app
 
-Thư mục entry point chính của ứng dụng.
+The main entry point folder of the application.
 
-## Cấu trúc con:
-- `App.tsx`: Root component, bọc tất cả provider & router.
-- `Router.tsx`: Định nghĩa các route chính của ứng dụng.
-- `providers/`: Chứa các context provider hoặc wrapper global như:
-    - `ReactQueryProvider.tsx`
-    - `ThemeProvider.tsx`
-    - `SuspenseBoundary.tsx`
+## Sub-structure:
+- `App.tsx`: Root component, wraps all providers and the router.
+- `Router.tsx`: Defines the main routes of the application.
+- `providers/`: Contains context providers or global wrappers such as:
+  - `ReactQueryProvider.tsx`
+  - `ThemeProvider.tsx`
+  - `SuspenseBoundary.tsx`
 
-> Chỉ nên chứa logic toàn app (không domain cụ thể).
+> Should only contain app-wide logic (no domain-specific logic).

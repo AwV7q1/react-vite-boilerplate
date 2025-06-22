@@ -1,5 +1,5 @@
 import {Suspense, ReactNode} from 'react';
-import AppLoadingOverlay from "../../shared/components/loading/AppLoadingOverlay";
+import AppLoadingOverlay from "@shared/components/loading/AppLoadingOverlay.jsx";
 
 
 export const SuspenseBoundary = ({children}: { children: ReactNode }) => {

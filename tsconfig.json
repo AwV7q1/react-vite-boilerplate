@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "allowJs": true,         // 👈 Cho phép biên dịch file .js
-    "checkJs": false,        // 👈 Không báo lỗi trong file .js
-    "jsx": "react-jsx",      // 👈 Cho phép JSX trong .js/.tsx
+    "resolveJsonModule": true,
+    "moduleResolution": "nodenext",
+    "module": "esnext",       // Use ESNext module system (supports modern import/export, required for import.meta)
+    "allowJs": true,          // Allow TypeScript to compile JavaScript (.js) files
+    "checkJs": false,         // Disable type-checking for JavaScript files
+    "jsx": "react-jsx",       // Enable JSX support using the new React 17+ transform (no need to import React manually)
     "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "decorators",
       "dom",
@@ -21,7 +26,8 @@
       "@shared/*": ["src/shared/*"],
       "@style/*": ["src/style/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src"]
+    "typeRoots": ["./node_modules/@types", "./src"],
+    "types": ["vite/client", "node"]
   },
-  "include": ["src"],
+  "include": ["src", "vite-env.d.ts"]
 }

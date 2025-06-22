@@ -1,10 +1,7 @@
 @use "../../../../style/breakpoint/breakpoints" as breakpoints;
 
-.background {
-  background: #D9d9d9;
-}
 
-.container {
+.mainContainer {
   margin: 0 auto;
   background: white;
   width: 100dvw;

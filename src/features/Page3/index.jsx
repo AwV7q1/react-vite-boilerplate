@@ -4,7 +4,7 @@ import {withLazy} from "@shared/HOC/withLazy.js";
 const CardLazy = withLazy(() =>
     import ("@shared/HOC/brokenPage"),
   {
-    fallback: <div>bbbbbbbbb....</div>,
+    fallback: <div>broken page is loading....</div>,
     retryCount: 4
   }
 )

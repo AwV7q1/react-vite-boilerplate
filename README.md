@@ -14,11 +14,11 @@
 - **Storybook**: Isolated component development and documentation
 - **SCSS Modules**: Theming, mixins, breakpoints
 - **PWA-ready**: Installable, offline support (planned)
-
+- **i18n-ready**: Support multiple languages
 ---
 
 ## 📝Node Version
->v22.9.0
+>v22.16.0
 ---
 
 ## 🗂 Folder Structure

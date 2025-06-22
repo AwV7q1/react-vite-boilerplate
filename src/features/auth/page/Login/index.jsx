@@ -2,14 +2,19 @@ import React, {useRef} from 'react';
 import VersionInfo from "@shared/components/VersionInfo/index.jsx";
 import Button from "@shared/components/ui/Button/index.jsx";
 import {ToastContainer} from 'react-toastify';
+import {useTranslation} from 'react-i18next';
+import {useCurrentLanguage} from "@shared/hooks/i18n/useCurrentLanguage.js";
 import useSignIn from "@features/auth/hooks/auth/useSignIn.jsx";
+import {useTheme} from "@shared/hooks/theme/useTheme.js";
 import styles from './Login.module.scss';
 
 const Login = () => {
   const user_nameRef = useRef(null);
   const passwordRef = useRef(null);
   const {mutateLogin, pendingLogin, errorMessage} = useSignIn()
-
+  const {currentLang, changeLanguage} = useCurrentLanguage();
+  const {theme, toggleTheme} = useTheme();
+  const {t} = useTranslation('auth');
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,8 +28,37 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div>
+
+        <div className={styles.changeLanguage}>
+          <p>Change language</p>
+          <div>
+            <button
+              className={styles.buttonChange}
+              onClick={() => changeLanguage('vi')}
+              disabled={currentLang === 'vi'}
+            >
+              🇻🇳 Vietnamese
+            </button>
+            <button
+              className={styles.buttonChange}
+              onClick={() => changeLanguage('en')}
+              disabled={currentLang === 'en'}
+            >
+              🇺🇸 English
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.changeTheme}>
+          <p>Change theme:</p>
+          <button onClick={toggleTheme} className={styles.buttonChange}>
+            {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+          </button>
+        </div>
+
+
         <div className={styles.logo}>
-          FAST!!!
+          <p>{t('welcomeBack', {username: 'Quan'})}</p>
         </div>
         <ToastContainer position="top-center"/>
         {
@@ -43,7 +77,7 @@ const Login = () => {
               id="username"
               placeholder="Username"
               ref={user_nameRef}
-              // autoComplete="current-username"
+              autoComplete="current-username"
             />
           </div>
           <div className={styles.formGroup}>
@@ -67,7 +101,6 @@ const Login = () => {
           />
         </form>
       </div>
-
       <VersionInfo/>
     </div>
   );

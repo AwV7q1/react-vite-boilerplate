@@ -17,7 +17,7 @@ export const setupAxiosInterceptors = (axiosInstance) => {
 axiosInstance.interceptors.request.use(
   function (config) {
     // debug log in local
-    if (import.meta.env.VITE_DEV === "true") {
+    if (import.meta.env.VITE_DEV_MODE === "development") {
 
       console.log('%c[API REQUEST]', 'color: yellow', {
         url: config.url,
@@ -48,7 +48,7 @@ axiosInstance.interceptors.request.use(
       // Do something with response data
 
       // debug log in local
-      if (import.meta.env.VITE_DEV === "true") {
+      if (import.meta.env.VITE_DEV_MODE === "development") {
         console.log('%c[API RESPONSE]', 'color: pink', {
           url: response.config.url,
           data: response.data,

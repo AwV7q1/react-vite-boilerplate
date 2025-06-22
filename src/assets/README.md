@@ -1,7 +1,7 @@
 # /assets
 
-Lưu trữ tài nguyên tĩnh của dự án như ảnh và icon.
+Stores static assets of the project such as images and icons.
 
-## Các folder:
-- `images/`: Ảnh background, logo, banner,...
-- `icons/`: SVG hoặc icon vector dùng trong UI
+## Folders:
+- `images/`: Backgrounds, logos, banners, etc.
+- `icons/`: SVGs or vector icons used in the UI

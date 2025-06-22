@@ -1,55 +1,60 @@
-## Hướng dẫn sử dụng HOC
+## HOC Usage Guide
 
-### import component với HOC
-- import withLazy và bọc link import component của bạn vào withLazy để sử dụng
+### Importing a Component with HOC
+- Import `withLazy` and wrap your component import using it:
 ```jsx
-// khai báo component sử dụng lazy
+// Declare the component with lazy loading
 const LazyCard = withLazy(() => import('./Card'), {
-fallback: <div>Đang tải thẻ...</div>, // truyền component loading
-retryCount: 2 // số lượt retry
+  fallback: <div>Loading card...</div>, // loading fallback component
+  retryCount: 2 // number of retry attempts
 });
 ```
+---
 
-### Sử dụng component đã import lazy
-- Sử dụng trong trường hợp dự đoán người dùng chuyển trang dùng preload để tải trước nội dung
+### Using the Lazy-Loaded Component
+- Useful when you want to preload content in anticipation of user navigation:
 ```jsx
-// Gọi preload khi hover chuột
+// Trigger preload on mouse hover
 <button onMouseEnter={() => LazyCard.preload()}>
-Tới Card
+  Go to Card
 </button>
 
-// Dùng trong JSX
+// Use it in JSX
 <LazyCard someProp="abc" />
 ```
+---
 
 
+### Testing the Result
+Check Suspense Fallback:
+- Import fakeDelay and wrap it around the component to simulate loading time.
+- Add a delay duration.
 
-### Kiểm tra kết quả
-Kiểm tra Suspense fallback:
-- import fakeDelay và bọc nó vào component cần import\
-- thêm thời gian delay
- 
-Kiểm tra lazy:
-- Tạo 2 màn hình A và B
-- component được lazy sẽ import vào màn hình B
-- Bật dev tool ở browser, chuyển sang tab Network, chọn filter JS, đánh dấu vào disable cache, kiểm tra các file js được tải xuống.
-- Từ màn hình A điều hướng sáng màn hình B, lúc này component lazy sẽ tải xuống và fallback loading, sau 2 giây sẽ hiển thị
-- Kết quả đúng:
-  - khi vào màn hình A, component lazy không được tải xuống
-  - Chỉ khi vào màn hình B, component lazy mới được tải xuống
+Check Lazy Loading:
+- Create two screens: A and B.
+- The lazy component should be used in screen B.
+- Open browser DevTools, go to the Network tab, filter by JS, and enable "Disable cache".
+- From screen A, navigate to screen B. At this point:
+  - The lazy component should be downloaded.
+  - A fallback loading UI should appear, and after 2 seconds the component should display.
 
-Kiểm tra handle error component:
-- import component brokenPage vào lazy
-- error của component sẽ hiện lên ở vị trí import compent trên màn hình mà không gây báo lỗi cả màn hình
+Expected behavior:
+- When visiting screen A, the lazy component is not loaded.
+- It only gets loaded when navigating to screen B.
+
+Check Error Handling:
+- Import a broken component (e.g., brokenPage) using lazy loading.
+- The error should display in place of the component without crashing the entire app.
+
 ```jsx
 const LazyCard = withLazy(() => fakeDelay(
   (
     import('./Card'), 
     {
-      fallback: <div>Đang tải thẻ...</div>, // truyền component loading
-      retryCount: 2 // số lượt retry
+      fallback: <div>Loaddng...</div>, // loading fallback component
+      retryCount: 2  // number of retry attempts 
     }
   ),
-  2000 // delay thời gian load 2000
+  2000 // delay of 2000ms
 ))
 ```

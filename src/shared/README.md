@@ -1,18 +1,18 @@
 # /shared
 
-Chứa tất cả các thành phần dùng chung giữa các feature trong app.
+Contains all reusable elements shared across features in the app.
 
-## Thư mục con:
-- `components/`: UI components tái sử dụng.
-    - `ui/`: Button, Modal, Spinner, Skeleton...
-    - `layout/`: Header, Footer, Sidebar...
-    - `feedback/`: Toast, ErrorFallback,...
-    - `loading/`: AppLoadingOverlay, RouteLoading, ComponentSkeleton,...
-- `hooks/`: Các hook tiện ích dùng chung (debounce, network, focus...)
-- `store/`: Zustand store toàn cục (auth, loading, user,...)
-- `utils/`: Hàm tiện ích nhỏ (formatDate, retryWithJitter,...)
-- `constants/`: Hằng số chung (API endpoint, theme...)
-- `types/`: Các kiểu dùng toàn app (global.d.ts,...)
-- `HOC/`: Higher-order components (ví dụ: withSuspense)
+## Subfolders:
+- `components/`: Reusable UI components.
+  - `ui/`: Button, Modal, Spinner, Skeleton, etc.
+  - `layout/`: Header, Footer, Sidebar, etc.
+  - `feedback/`: Toast, ErrorFallback, etc.
+  - `loading/`: AppLoadingOverlay, RouteLoading, ComponentSkeleton, etc.
+- `hooks/`: Shared utility hooks (debounce, network status, focus detection, etc.)
+- `store/`: Global Zustand stores (auth, loading state, user data, etc.)
+- `utils/`: Small utility functions (formatDate, retryWithJitter, etc.)
+- `constants/`: Shared constants (API endpoints, theme values, etc.)
+- `types/`: Global TypeScript types (e.g., `global.d.ts`, etc.)
+- `HOC/`: Higher-order components (e.g., `withSuspense`)
 
-> Tuyệt đối không viết logic cụ thể domain ở đây!
+> Absolutely no domain-specific logic should be written here!

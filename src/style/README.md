@@ -1,12 +1,12 @@
 # /styles
 
-SCSS, biến và cấu hình toàn app.
+Global SCSS files, variables, and configuration for the entire app.
 
-## Các file:
-- `_variables.scss`: Biến toàn cục (màu sắc, khoảng cách,...)
-- `_mixins.scss`: Mixin SCSS tái sử dụng
-- `_breakpoints.scss`: Biến breakpoint cho responsive
-- `theme.scss`: Định nghĩa theme (nếu có dark/light)
-- `main.scss`: File SCSS tổng được import vào app
+## Files:
+- `_variables.scss`: Global variables (colors, spacing, etc.)
+- `_mixins.scss`: Reusable SCSS mixins
+- `_breakpoints.scss`: Breakpoint variables for responsive design
+- `theme.scss`: Theme definitions (e.g., dark/light mode)
+- `main.scss`: Main SCSS file imported into the app
 
-> Có thể chia ra light / dark theme ở đây nếu cần.
+> You can separate light and dark themes here if needed.

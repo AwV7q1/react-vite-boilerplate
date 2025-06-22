@@ -1,18 +1,13 @@
 import React, {Fragment} from 'react';
-import styles from './LayoutAuth.module.scss'
 import NetworkStatusNotifier from "@shared/components/feedback/NetworkStatusNotifier/index.jsx";
-
-// import {Toast} from "@components/Toast/index.tsx";
+import styles from './LayoutAuth.module.scss'
 
 const LayoutAuth = ({children}) => {
   return (
     <Fragment>
-      <div className={styles.background}>
-        <div className={styles.wrapper}>
-          <NetworkStatusNotifier/>
-          {/*<Toast/>*/}
-          {children}
-        </div>
+      <div className={styles.authContainer}>
+        <NetworkStatusNotifier/>
+        {children}
       </div>
     </Fragment>
   );

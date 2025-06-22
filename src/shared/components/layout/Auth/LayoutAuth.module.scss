@@ -1,14 +1,9 @@
 @use "../../../../style/breakpoint/breakpoints" as breakpoints;
 @use "../../../../style/index" as styles;
 
-.background {
-  background-color: styles.$primary;
-}
-
-.wrapper {
+.authContainer {
   width: 100dvw;
   height: 100dvh;
-  background: white;
   margin: 0 auto;
 
   @include breakpoints.respond(("phone", "tab-port", "tab-land", "desktop")) {
