@@ -16,7 +16,7 @@ const UseIsTabVisible = () => {
     window.addEventListener('visibilityChange', handleIsVisibilityChange);
 
     return () => {
-      window.removeEventListener('online', handleIsFocus);
+      window.removeEventListener('focus', handleIsVisible);
       window.removeEventListener('visibilityChange', handleIsVisibilityChange);
     }
 
