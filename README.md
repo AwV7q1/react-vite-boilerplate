@@ -4,7 +4,10 @@
 
 ---
 
-## 🚀 Features
+## 📝Node Version
+>v22.16.0
+
+## 🛠️ Features
 
 ### 🧱 Architecture
 - **Vite**: Ultra-fast dev/build environment
@@ -17,9 +20,19 @@
 - **i18n-ready**: Support multiple languages
 ---
 
-## 📝Node Version
->v22.16.0
----
+## 📦 Tech Stack
+| Purpose       | Library/Tool       |
+| ------------- | ------------------ |
+| Frontend      | React, Vite        |
+| State Mgmt    | Zustand            |
+| Data Fetching | React Query        |
+| HTTP Client   | Axios              |
+| Routing       | React Router       |
+| Styling       | SCSS Modules       |
+| Build Tool    | Vite               |
+| Component Dev | Storybook          |
+| Utilities     | Custom hooks/utils |
+| PWA           | (Planned)          |
 
 ## 🗂 Folder Structure
 ```yaml
@@ -73,36 +86,15 @@ src/
 ├── index.tsx # Entry point
 └── ...
 ```
+
 ---
-
-## 📘 Storybook
-
-Storybook is set up for developing and documenting UI components in isolation.
-
-### Run Storybook:
+## 🚀 Getting Started
+### 1. Clone the repo
 
 ```bash
-npm run storybook
-```
+git clone https://github.com/AwV7q1/react-vite-boilerplate.git
+cd react-vite-boilerplate
 
-```bash
-npm run build-storybook
-```
----
-## 🧠 Custom Hooks & Features
-useDebounce, useNetworkStatus, useFocusTab
-
-Custom form components with controlled onChange, validation, and submission
-
-Reusable loading states:
-
-AppLoading, RouteLoading, ComponentSkeleton
-
-retryWithJitter for network retry strategy
-
-withSuspense HOC for lazy components
-
-```bash
 # Install dependencies
 npm install
 
@@ -128,21 +120,58 @@ npm run test
 npm run storybook
 ```
 ---
-## 📦 Tech Stack
-| Purpose       | Library/Tool       |
-| ------------- | ------------------ |
-| Frontend      | React, Vite        |
-| State Mgmt    | Zustand            |
-| Data Fetching | React Query        |
-| HTTP Client   | Axios              |
-| Routing       | React Router       |
-| Styling       | SCSS Modules       |
-| Build Tool    | Vite               |
-| Component Dev | Storybook          |
-| Utilities     | Custom hooks/utils |
-| PWA           | (Planned)          |
+## 📘 Storybook
+
+Storybook is set up for developing and documenting UI components in isolation.
+
+### Run Storybook:
+
+```bash
+# Run storybook
+npm run storybook
+
+# Build storybook
+npm run build-storybook
+```
+---
+
+## 🌐 Internationalization (i18n)
+Language files are stored in: public/locales/{lang}/{namespace}.json
+
+Supports dynamic import, preload, and routing via /en/*, /vi/*, etc.
+
+```tsx
+const { t } = useTranslation('common');
+t('welcome', { name: 'Quan' });
+```
+---
+## 🌓 Theme (Dark/Light)
+Automatically persisted in localStorage
+
+Class (`dark` or `light`) is injected into `<html>`
+
+Use with Zustand:
+
+```tsx
+import { useThemeStore } from '@/shared/store/useThemeStore';
+
+const { theme, toggleTheme } = useThemeStore();
+
+```
+
+## 🧠 Custom Hooks & Features
+useDebounce, useNetworkStatus, useFocusTab
+
+Reusable loading states:
+
+AppLoading, RouteLoading, ComponentSkeleton
+
+retryWithJitter for network retry strategy
+
+withSuspense HOC for lazy components
 
 ---
+
 ## 📈 Optimization Goals
 🧩 Modular, scalable codebase
 
@@ -153,6 +182,24 @@ npm run storybook
 🌐 Language-ready with i18n support
 
 🧪 Extensible testing with Vitest/Jest
+
+---
+
+## 📬 Contact
+Feel free to reach out via [GitHub Issues](https://github.com/AwV7q1/react-vite-boilerplate/issues)
+
+For feature requests or bug reports, please open an issue.
+
+---
+
+## 🛡 License
+MIT License. See [LICENSE](LICENSE.md) for more.
+
+---
+## 🙌 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+#### ⭐ Star this repo if you find it useful – your support means a lot!
 
 ---
 ## 👤 Author
