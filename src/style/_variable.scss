@@ -1,13 +1,193 @@
-// Khai báo biến toàn cục
-$primary-color: #0070f3;
-$secondary-color: #1db954;
-$font-size-base: 16px;
-$radius: 8px;
+@use 'color/palette' as color;
+@use './size/size' as size;
 
 
-// _variables.scss
-$primary: #eaeaea;
+// ===================== Theme =====================
+$primary: color.$blue-100;
+$secondary: color.$grey-200;
+$success: color.$green-200;
+$danger: color.$red-100;
+$warning: color.$orange-100;
+$info: color.$cyan-100;
+$light: color.$white-400;
+
+// ===================== Text =====================
+$text-title: color.$grey-100;
+$text-desc: color.$grey-200;
+$text-placeholder: color.$grey-300;
+$text-error: color.$red-100;
+$text-warning: color.$orange-100;
+$text-success: color.$green-200;
+$text-link: color.$blue-100;
+$text-input: color.$grey-100;
+
+// ===================== Border =====================
+$border-input: color.$grey-400;
+$border-section: color.$grey-600;
+
+// ===================== Line =====================
+$line: color.$grey-500;
+
+// ===================== Background =====================
+$background-section: color.$white-100;
+$background-app: color.$white-200;
+$background-label: color.$white-300;
+
+// ===================== Button Primary =====================
+$bg-btn-primary: color.$blue-100;
+$color-btn-primary: color.$white-100;
+$hover-btn-primary: color.$blue-200;
+$disable-btn-primary: color.$blue-300;
+
+// ===================== Radio =====================
+$background-radio: color.$blue-500;
+$border-radio: color.$blue-100;
+$color-label-radio: color.$blue-100;
+
+// ===================== Icon search =====================
+$bg-icon-search-inside: color.$blue-400;
+$bg-icon-search-outside: color.$blue-600;
+$color-icon-search: color.$blue-100;
+
+// ===================== Icon check =====================
+$bg-icon-check-inside: color.$green-300;
+$bg-icon-check-outside: color.$blue-400;
+$color-icon-check: color.$green-100;
+
+// ===================== Buy =====================
+$color-crypto-buy: color.$green-200;
+$bg-crypto-buy: color.$green-500;
+
+// ===================== Sell =====================
+$color-crypto-sell: color.$red-200;
+$bg-crypto-sell: color.$red-300;
+
+// ===================== Warning card =====================
+$bg-warning: color.$orange-200;
+$border-warning: color.$orange-300;
+
+// ===================== Border radius =====================
+$radius-2: size.$size-2;
+$radius-4: size.$size-4;
+$radius-8: size.$size-8;
+$radius-12: size.$size-12;
+$radius-16: size.$size-16;
+$radius-18: size.$size-18;
+$radius-24: size.$size-24;
+
+// ===================== Font size =====================
+$size-12: size.$size-12;
+$size-13: size.$size-13;
+$size-14: size.$size-14;
+$size-16: size.$size-16;
+$size-18: size.$size-18;
+$size-20: size.$size-20;
+$size-24: size.$size-24;
+
+// ===================== Font weight =====================
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+// ===================== Spacing =====================
+$space-2: size.$size-2;
+$space-4: size.$size-4;
+$space-8: size.$size-8;
+$space-12: size.$size-12;
+$space-16: size.$size-16;
+$space-24: size.$size-24;
+$space-32: size.$size-32;
+
+$theme-vars: (
+  // ===================== Theme =====================
+        'primary': $primary,
+        'secondary':$secondary,
+        'success': $success,
+        'danger': $danger,
+        'warning':$warning,
+        'info': $info,
+        'white': $light,
+  // ===================== Text =====================
+        "text-title": $text-title,
+        "text-desc": $text-desc,
+        "text-placeholder": $text-placeholder,
+        "text-error": $text-error,
+        "text-warning": $text-warning,
+        "text-success": $text-success,
+        "text-link": $text-link,
+        "text-input": $text-input,
+  // ===================== Border =====================
+        "border-input": $border-input,
+        "border-section": $border-section,
+  // ===================== Line =====================
+        "line": $line,
+  // ===================== Background =====================
+        "background-section": $background-section,
+        "background-app": $background-app,
+        "background-label": $background-label,
+  // ===================== Button Primary =====================
+        "bg-btn-primary": $bg-btn-primary,
+        "color-btn-primary": $color-btn-primary,
+        "hover-btn-primary": $hover-btn-primary,
+        "disable-btn-primary": $disable-btn-primary,
+  // ===================== Radio =====================
+        "background-radio": $background-radio,
+        "border-radio": $border-radio,
+        "color-radio": $color-label-radio,
+  // ===================== Icon search =====================
+        "bg-icon-search-inside": $bg-icon-search-inside,
+        "bg-icon-search-outside": $bg-icon-search-outside,
+        "color-icon-search": $color-icon-search,
+  // ===================== Icon check =====================
+        "bg-icon-check-inside": $bg-icon-check-inside,
+        "bg-icon-check-outside": $bg-icon-check-outside,
+        "color-icon-check": $color-icon-check,
+  // ===================== Buy =====================
+        "color-crypto-buy": $color-crypto-buy,
+        "bg-crypto-buy": $bg-crypto-buy,
+  // ===================== Sell =====================
+        "color-crypto-sell": $color-crypto-sell,
+        "bg-crypto-sell":$bg-crypto-sell,
+  // ===================== Warning card =====================
+        "bg-warning": $bg-warning,
+        "border-warning": $border-warning,
+  // ===================== Border radius =====================
+        "radius-2": $radius-2,
+        "radius-4": $radius-4,
+        "radius-8": $radius-8,
+        "radius-12": $radius-12,
+        "radius-16": $radius-16,
+        "radius-18": $radius-18,
+        "radius-24": $radius-24,
+  // ===================== Font size =====================
+        "size-12": $size-12,
+        "size-13": $size-13,
+        "size-14": $size-14,
+        "size-16": $size-16,
+        "size-18": $size-18,
+        "size-20": $size-20,
+        "size-24": $size-24,
+  // ===================== Font weight =====================
+        "light": $light,
+        "regular": $regular,
+        "medium": $medium,
+        "semibold": $semibold,
+        "bold": $bold,
+  // ===================== Spacing =====================
+        "space-2": $space-2,
+        "space-4": $space-4,
+        "space-8": $space-8,
+        "space-12": $space-12,
+        "space-16": $space-16,
+        "space-24": $space-24,
+        "space-32": $space-32,
+);
 
 :root {
-  --primary: #{$primary}; // inject SCSS var into CSS var
+  @each $name, $value in $theme-vars {
+    --#{$name}: #{$value};
+  }
 }
+

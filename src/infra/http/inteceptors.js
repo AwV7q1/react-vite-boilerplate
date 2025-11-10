@@ -1,4 +1,6 @@
-import {useAuthStore} from "@/shared/store/useAuthStore/index.js";
+import axios from "axios";
+
+import { useAuthStore } from "@/shared/store/useAuthStore/index.js";
 
 let isRefreshing = false;
 let refreshSubscribers = [];
@@ -8,48 +10,46 @@ const subscribeTokenRefresh = (cb) => {
 };
 
 const onRefreshed = (token) => {
-  refreshSubscribers.forEach((cb) => cb(token));
+  refreshSubscribers.for((cb) => cb(token));
   refreshSubscribers = [];
 };
 
 export const setupAxiosInterceptors = (axiosInstance) => {
   // Add a request interceptor
-axiosInstance.interceptors.request.use(
-  function (config) {
-    // debug log in local
-    if (import.meta.env.VITE_DEV_MODE === "development") {
+  axiosInstance.interceptors.request.use(
+    function (config) {
+      // debug log in local
+      if (import.meta.env.VITE_DEBUG_AXIOS === "true") {
+        console.log("%c[API REQUEST]", "color: yellow", {
+          url: config.url,
+          method: config.method,
+          params: config.params,
+          data: config.data,
+        });
+      }
 
-      console.log('%c[API REQUEST]', 'color: yellow', {
-        url: config.url,
-        method: config.method,
-        params: config.params,
-        data: config.data,
-      });
-    }
+      // Do something before request is sent
+      const token = JSON.parse(localStorage.getItem("auth-storage"));
+      if (token.state.accessToken) {
+        config.headers.Authorization = `Bearer ${token.state.accessToken}`;
+      }
+      return config;
+    },
+    function (error) {
+      // Do something with request error
+      return Promise.reject(error);
+    },
+  );
 
-
-    // Do something before request is sent
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  },
-);
-
-// Add a response interceptor
+  // Add a response interceptor
   axiosInstance.interceptors.response.use(
     function (response) {
       // Any status code that lie within the range of 2xx cause this function to trigger
       // Do something with response data
 
       // debug log in local
-      if (import.meta.env.VITE_DEV_MODE === "development") {
-        console.log('%c[API RESPONSE]', 'color: pink', {
+      if (import.meta.env.VITE_DEBUG_AXIOS === "true") {
+        console.log("%c[API RESPONSE]", "color: pink", {
           url: response.config.url,
           data: response.data,
         });
@@ -60,9 +60,9 @@ axiosInstance.interceptors.request.use(
     async function (error) {
       // Any status codes that falls outside the range of 2xx cause this function to trigger
       // Do something with response error
-      console.error("error", error);
+      console.error("error-----", error);
       const originalRequest = error.config;
-      const {refreshToken, setAccessToken, logout} = useAuthStore.getState();
+      const { refreshToken, setAccessToken, logout } = useAuthStore.getState();
 
       if (
         error.response?.status === 401 &&
@@ -84,9 +84,12 @@ axiosInstance.interceptors.request.use(
 
         // call api get refresh token
         try {
-          const response = await axios.post("https://api.example.com/auth/refresh", {
-            refreshToken,
-          });
+          const response = await axios.post(
+            "https://api.example.com/auth/refresh",
+            {
+              refreshToken,
+            },
+          );
 
           // get new token then set it to store zustand
           const newAccessToken = response.data.accessToken;
@@ -100,17 +103,12 @@ axiosInstance.interceptors.request.use(
           return axiosInstance(originalRequest);
         } catch (err) {
           logout();
-          return Promise.reject(err);
+          throw new Error(err);
         } finally {
           isRefreshing = false;
         }
       }
-
-      return Promise.reject(error);
+      throw new Error(error);
     },
   );
-
-}
-
-
-
+};

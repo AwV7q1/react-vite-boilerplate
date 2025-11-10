@@ -1,11 +1,13 @@
 import React, {useRef} from 'react';
-import VersionInfo from "@shared/components/VersionInfo/index.jsx";
-import Button from "@shared/components/ui/Button/index.jsx";
-import {ToastContainer} from 'react-toastify';
 import {useTranslation} from 'react-i18next';
+import {ToastContainer} from 'react-toastify';
+import Button from "@shared/components/ui/Button/index.jsx";
+import VersionInfo from "@shared/components/VersionInfo/index.jsx";
 import {useCurrentLanguage} from "@shared/hooks/i18n/useCurrentLanguage.js";
-import useSignIn from "@features/auth/hooks/auth/useSignIn.jsx";
 import {useTheme} from "@shared/hooks/theme/useTheme.js";
+
+import useSignIn from "@features/auth/hooks/auth/useSignIn.js";
+
 import styles from './Login.module.scss';
 
 const Login = () => {
@@ -16,10 +18,9 @@ const Login = () => {
   const {theme, toggleTheme} = useTheme();
   const {t} = useTranslation('auth');
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const user_name = user_nameRef.current?.value ?? "";
-    const password = passwordRef.current?.value ?? "";
+  const onSubmit = () => {
+    const user_name: string = user_nameRef.current?.value ?? "";
+    const password: string = passwordRef.current?.value ?? "";
 
     console.log(user_name, password);
     mutateLogin({user_name, password});
@@ -58,7 +59,7 @@ const Login = () => {
 
 
         <div className={styles.logo}>
-          <p>{t('welcomeBack', {username: 'Quan'})}</p>
+          <p>{t('welcomeBack', {username: 'Username'})}</p>
         </div>
         <ToastContainer position="top-center"/>
         {
@@ -77,7 +78,7 @@ const Login = () => {
               id="username"
               placeholder="Username"
               ref={user_nameRef}
-              autoComplete="current-username"
+              autoComplete="username"
             />
           </div>
           <div className={styles.formGroup}>

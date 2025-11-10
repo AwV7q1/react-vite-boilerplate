@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import ScreenTransition from "@shared/components/layout/ScreenTransition/index.js";
 
 const NotFound = () => {
-    return (
-        <div>
-            NotFound
-        </div>
-    );
+  return <ScreenTransition>NotFound</ScreenTransition>;
 };
 
 export default NotFound;

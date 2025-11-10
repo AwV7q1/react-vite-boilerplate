@@ -1,15 +1,17 @@
-import React, {Fragment} from 'react';
+import React from "react";
 import NetworkStatusNotifier from "@shared/components/feedback/NetworkStatusNotifier/index.jsx";
-import styles from './LayoutAuth.module.scss'
+import PageWrapper from "@shared/components/layout/PageWrapper/index.js";
 
-const LayoutAuth = ({children}) => {
+import styles from "./LayoutAuth.module.scss";
+
+const LayoutAuth = ({ children }) => {
   return (
-    <Fragment>
+    <PageWrapper>
       <div className={styles.authContainer}>
-        <NetworkStatusNotifier/>
+        <NetworkStatusNotifier />
         {children}
       </div>
-    </Fragment>
+    </PageWrapper>
   );
 };
 

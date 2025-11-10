@@ -1,10 +1,10 @@
 import react from "@vitejs/plugin-react";
-import {defineConfig} from "vite";
-import {fileURLToPath} from "url";
-import {execSync} from "child_process";
-import {visualizer} from "rollup-plugin-visualizer";
-import { VitePWA } from 'vite-plugin-pwa'
+import {execSync} from "node:child_process";
 import * as path from "node:path";
+import {fileURLToPath} from "node:url";
+import {visualizer} from "rollup-plugin-visualizer";
+import {defineConfig} from "vite";
+
 import pkg from "./package.json";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -28,6 +28,13 @@ export default defineConfig(({mode})  => {
         '@style': path.resolve(__dirname, './src/style')
       },
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@style/index" as *;`,
+        },
+      },
+    },
     plugins: [
       react(),
       (isAnalyze ? [visualizer({
@@ -37,30 +44,6 @@ export default defineConfig(({mode})  => {
         brotliSize: true,              // ✅ Show Brotli-compressed bundle size
         template: 'treemap',           // or 'sunburst', 'network'
       })] : []),
-      VitePWA({
-        registerType: 'autoUpdate', // auto update SW
-        includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
-        manifest: {
-          name: 'Tên Ứng Dụng',
-          short_name: 'App',
-          description: 'Miêu tả ngắn',
-          theme_color: '#ffffff',
-          background_color: '#ffffff',
-          display: 'standalone',
-          icons: [
-            {
-              src: 'pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: 'pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png'
-            }
-          ]
-        }
-      })
     ],
     define: {
       __APP_VERSION__: JSON.stringify(pkg.version),
@@ -69,7 +52,8 @@ export default defineConfig(({mode})  => {
     },
     server: {
       historyApiFallback: true,
-      allowedHosts: true
+      allowedHosts: true,
+      host: true
     }
   };
 })
