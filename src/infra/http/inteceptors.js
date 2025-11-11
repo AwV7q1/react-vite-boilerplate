@@ -10,7 +10,7 @@ const subscribeTokenRefresh = (cb) => {
 };
 
 const onRefreshed = (token) => {
-  refreshSubscribers.for((cb) => cb(token));
+  refreshSubscribers.forEach((cb) => cb(token));
   refreshSubscribers = [];
 };
 
@@ -103,12 +103,12 @@ export const setupAxiosInterceptors = (axiosInstance) => {
           return axiosInstance(originalRequest);
         } catch (err) {
           logout();
-          throw new Error(err);
+          return Promise.reject(err);
         } finally {
           isRefreshing = false;
         }
       }
-      throw new Error(error);
+      return Promise.reject(error);
     },
   );
 };
